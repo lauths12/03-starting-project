@@ -29,16 +29,20 @@ export default function ResultsTable({
       </thead>
       <tbody>
         {results.map((result, index) => {
-          const totalInterest = results
-            .slice(0, index + 1)
-            .reduce((sum, entry) => sum + entry.interest, 0);
+          if (index === 0) {
+            result.totalInterest = result.interest;
+          } else {
+            result.totalInterest =
+              results[index - 1].totalInterest + result.interest;
+          }
+          const investedCapital = result.valueEndOfYear - result.totalInterest;
           return (
             <tr key={result.year}>
               <td>{result.year}</td>
               <td>{formatter.format(result.valueEndOfYear)}</td>
               <td>{formatter.format(result.interest)}</td>
-              <td>{formatter.format(totalInterest)}</td>
-              <td>{formatter.format(result.valueEndOfYear - totalInterest)}</td>
+              <td>{formatter.format(result.totalInterest)}</td>
+              <td>{formatter.format(investedCapital)}</td>
             </tr>
           );
         })}
