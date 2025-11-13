@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "./components/Header/Header.jsx"
+import Header from "./components/Header/Header.jsx";
 import UserInput from "./components/UserInput";
 import ResultsTable from "./components/ResultsTable/ResultsTable.jsx";
 
@@ -19,6 +19,8 @@ function App() {
       };
     });
   }
+
+  const inputIsValid = values.duration >= 1;
 
   return (
     <>
@@ -53,7 +55,11 @@ function App() {
           />
         </div>
       </section>
-      <ResultsTable {...values} />
+      {inputIsValid ? (
+        <inputResultsTable {...values} />
+      ) : (
+        <p className="center">Please enter a valid duration.</p>
+      )}
     </>
   );
 }
