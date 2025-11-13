@@ -1,5 +1,6 @@
-import { calculateInvestmentResults } from "../util/investment";
-import { formatter } from "../util/investment";
+import { calculateInvestmentResults } from "../../util/investment";
+import { formatter } from "../../util/investment";
+import "./ResultsTable.css"
 
 export default function ResultsTable({
   initialInvestment,

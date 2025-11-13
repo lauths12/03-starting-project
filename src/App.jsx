@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "./components/Header";
+import Header from "./components/Header/Header.jsx"
 import UserInput from "./components/UserInput";
-import ResultsTable from "./components/ResultsTable";
+import ResultsTable from "./components/ResultsTable/ResultsTable.jsx";
 
 function App() {
   const [values, setValues] = useState({
